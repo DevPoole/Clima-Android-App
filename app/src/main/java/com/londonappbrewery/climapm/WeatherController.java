@@ -1,7 +1,6 @@
 package com.londonappbrewery.climapm;
 
 import android.Manifest;
-import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -59,10 +58,10 @@ public class WeatherController extends AppCompatActivity {
         setContentView(R.layout.weather_controller_layout);
 
         // Linking the elements in the layout to Java code
-        mCityLabel = (TextView) findViewById(R.id.locationTV);
-        mWeatherImage = (ImageView) findViewById(R.id.weatherSymbolIV);
-        mTemperatureLabel = (TextView) findViewById(R.id.tempTV);
-        ImageButton changeCityButton = (ImageButton) findViewById(R.id.changeCityButton);
+        mCityLabel = findViewById(R.id.locationTV);
+        mWeatherImage = findViewById(R.id.weatherSymbolIV);
+        mTemperatureLabel = findViewById(R.id.tempTV);
+        ImageButton changeCityButton = findViewById(R.id.changeCityButton);
 
 
         // TODO: Add an OnClickListener to the changeCityButton here:
@@ -188,6 +187,7 @@ public class WeatherController extends AppCompatActivity {
                 Log.d("Clima", "Success! JSON: " + response.toString());
 
                 WeatherDataModel weatherData = WeatherDataModel.fromJson(response);
+                assert weatherData != null;
                 updateUI(weatherData);
             }
 
